@@ -1,15 +1,15 @@
 Param(
     [Parameter(Mandatory=$True, HelpMessage="Name of the Resource group to be used for Databricks and VNet")]
     [String]
-    $RG_NAME= "az-databricks-rg6",
+    $RG_NAME ,
 
     [Parameter(Mandatory=$True, HelpMessage="Location for all resources")]
     [String]
-    $REGION = "centralindia",
+    $REGION ,
 
     [Parameter(Mandatory=$True, HelpMessage="The name of the Azure Databricks workspace to create")]
     [String]
-    $WORKSPACE_NAME= "databrickslab123",
+    $WORKSPACE_NAME ,
 
     [Parameter(Mandatory=$True, HelpMessage="Cluster name requested by the user. This doesn't have to be unique")]
     [String]
