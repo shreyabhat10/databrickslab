@@ -32,13 +32,23 @@ Param(
     $CLUSTER_DRIVER_SIZE
 )
 
+
+
 #Write-Output "Task: Wait for workspace API to become available"
 #Start-Sleep -Seconds 120
 
+Write-Host "file upload script started"
+ if ((Get-Module -ListAvailable Az.Accounts) -eq $null)
+	{
+       Install-Module -Name Az.Accounts -Force
+    }
+
+
+
 Write-Output "Task: Generating Databricks Token"
-$WORKSPACE_ID = (az resource show --resource-type Microsoft.Databricks/workspaces --resource-group $RG_NAME --name $WORKSPACE_NAME --query id --output tsv)
-$TOKEN = (az account get-access-token --resource '2ff814a6-3304-4ab8-85cb-cd0e6f879c1d' | jq --raw-output '.accessToken')
-$AZ_TOKEN = (az account get-access-token --resource https://management.core.windows.net/ | jq --raw-output '.accessToken')
+$WORKSPACE_ID = (Az resource show --resource-type Microsoft.Databricks/workspaces --resource-group $RG_NAME --name $WORKSPACE_NAME --query id --output tsv)
+$TOKEN = (Az account get-access-token --resource '2ff814a6-3304-4ab8-85cb-cd0e6f879c1d' | jq --raw-output '.accessToken')
+$AZ_TOKEN = (Az account get-access-token --resource https://management.core.windows.net/ | jq --raw-output '.accessToken')
 $HEADERS = @{
     "Authorization" = "Bearer $TOKEN"
     "X-Databricks-Azure-SP-Management-Token" = "$AZ_TOKEN"
