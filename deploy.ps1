@@ -1,35 +1,35 @@
 Param(
     [Parameter(Mandatory=$True, HelpMessage="Name of the Resource group to be used for Databricks and VNet")]
     [String]
-    $RG_NAME ="az-databricks-rg7" ,
+    $RG_NAME,
 
     [Parameter(Mandatory=$True, HelpMessage="Location for all resources")]
     [String]
-    $REGION = "centralindia" ,
+    $REGION,
 
     [Parameter(Mandatory=$True, HelpMessage="The name of the Azure Databricks workspace to create")]
     [String]
-    $WORKSPACE_NAME = "dblabtest123" ,
+    $WORKSPACE_NAME,
 
     [Parameter(Mandatory=$True, HelpMessage="Cluster name requested by the user. This doesn't have to be unique")]
     [String]
-    $CLUSTER_NAME="testdbcluster",
+    $CLUSTER_NAME,
 
     [Parameter(Mandatory=$True, HelpMessage="The runtime version of the cluster")]
     [String]
-    $CLUSTER_VERSION="11.3.x-scala2.12",
+    $CLUSTER_VERSION,
 
     [Parameter(Mandatory=$True, HelpMessage="Number of worker nodes that this cluster should have (autoscaling is disabled)")]
     [String]
-    $CLUSTER_WORKERS_QUANTITY="4",
+    $CLUSTER_WORKERS_QUANTITY,
 
     [Parameter(Mandatory=$True, HelpMessage="The node type of the Spark worker")]
     [String]
-    $CLUSTER_WORKERS_SIZE="Standard_DS3_v2",
+    $CLUSTER_WORKERS_SIZE,
 
     [Parameter(Mandatory=$True, HelpMessage="The node type of the Spark driver")]
     [String]
-    $CLUSTER_DRIVER_SIZE="Standard_DS3_v2"
+    $CLUSTER_DRIVER_SIZE
 )
 
 if ((Get-Module -ListAvailable Az.Accounts) -eq $null)
