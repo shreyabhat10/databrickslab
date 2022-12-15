@@ -32,11 +32,6 @@ Param(
     $CLUSTER_DRIVER_SIZE
 )
 
-if ((Get-Module -ListAvailable Az.Accounts) -eq $null)
-	{
-       Install-Module -Name Az.Accounts -Force
-    }
-
 #Write-Output "Task: Wait for workspace API to become available"
 #Start-Sleep -Seconds 120
 
